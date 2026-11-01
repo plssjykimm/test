@@ -24,6 +24,10 @@ export function toggleDate(completedDates, dateKey) {
     : [...completedDates, dateKey];
 }
 
+export function confirmHabitDeletion(name, confirmFn = globalThis.confirm) {
+  return confirmFn(`“${name}” 습관을 삭제할까요?\n완료 기록도 함께 삭제됩니다.`);
+}
+
 function loadHabits() {
   try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) ?? []; }
   catch { return []; }
@@ -66,6 +70,7 @@ function startApp() {
         render();
       });
       fragment.querySelector(".delete-button").addEventListener("click", () => {
+        if (!confirmHabitDeletion(habit.name)) return;
         habits = habits.filter((item) => item.id !== habit.id);
         saveHabits(habits);
         render();
