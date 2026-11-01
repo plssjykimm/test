@@ -28,6 +28,12 @@ export function confirmHabitDeletion(name, confirmFn = globalThis.confirm) {
   return confirmFn(`“${name}” 습관을 삭제할까요?\n완료 기록도 함께 삭제됩니다.`);
 }
 
+export function normalizeEditedName(value) {
+  if (typeof value !== "string") return null;
+  const name = value.trim();
+  return name || null;
+}
+
 function loadHabits() {
   try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) ?? []; }
   catch { return []; }
@@ -66,6 +72,13 @@ function startApp() {
       checkButton.setAttribute("aria-pressed", String(isCompleted));
       checkButton.addEventListener("click", () => {
         habit.completedDates = toggleDate(habit.completedDates, todayKey);
+        saveHabits(habits);
+        render();
+      });
+      fragment.querySelector(".edit-button").addEventListener("click", () => {
+        const nextName = normalizeEditedName(prompt("습관 이름을 수정하세요.", habit.name));
+        if (!nextName || nextName === habit.name) return;
+        habit.name = nextName;
         saveHabits(habits);
         render();
       });
