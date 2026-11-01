@@ -36,7 +36,10 @@ h2 { font-size: 1.65rem; }
 .habit-card.completed .habit-name { color: #6e7b76; text-decoration: line-through; }
 .habit-copy { display: grid; flex: 1; gap: 4px; }
 .streak { color: #7b8782; font-size: 0.84rem; }
-.delete-button { border: 0; background: transparent; color: #a15c43; font-size: 0.84rem; }
+.habit-actions { display: flex; gap: 4px; }
+.edit-button, .delete-button { padding: 8px; border: 0; background: transparent; font-size: 0.84rem; }
+.edit-button { color: #27745f; }
+.delete-button { color: #a15c43; }
 .empty-state { margin: 34px 0 12px; color: #7b8782; text-align: center; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 @media (max-width: 560px) {
@@ -45,4 +48,5 @@ h2 { font-size: 1.65rem; }
   .section-heading { align-items: start; flex-direction: column; }
   .habit-form { align-items: stretch; flex-direction: column; }
   .habit-form button { padding: 14px; }
+  .habit-actions { flex-direction: column; }
 }

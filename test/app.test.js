@@ -1,6 +1,12 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { calculateStreak, confirmHabitDeletion, localDateKey, toggleDate } from "../app.js";
+import {
+  calculateStreak,
+  confirmHabitDeletion,
+  localDateKey,
+  normalizeEditedName,
+  toggleDate,
+} from "../app.js";
 
 test("localDateKey formats a date in local time", () => {
   assert.equal(localDateKey(new Date(2026, 10, 1)), "2026-11-01");
@@ -29,4 +35,13 @@ test("confirmHabitDeletion includes the habit name and returns the choice", () =
   assert.equal(choice, false);
   assert.match(receivedMessage, /물 마시기/);
   assert.match(receivedMessage, /완료 기록/);
+});
+
+test("normalizeEditedName trims a valid name", () => {
+  assert.equal(normalizeEditedName("  저녁 산책  "), "저녁 산책");
+});
+
+test("normalizeEditedName rejects cancellation and blank names", () => {
+  assert.equal(normalizeEditedName(null), null);
+  assert.equal(normalizeEditedName("   "), null);
 });
