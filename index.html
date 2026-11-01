@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="매일 작은 습관을 기록하는 웹앱" />
+    <title>Tiny Habit</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <p class="eyebrow">TODAY'S SMALL WIN</p>
+        <h1>작은 습관이<br />큰 변화를 만들어요.</h1>
+        <p id="today" class="today"></p>
+      </header>
+      <section class="panel" aria-labelledby="habit-heading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">MY ROUTINE</p>
+            <h2 id="habit-heading">오늘의 습관</h2>
+          </div>
+          <p id="progress" class="progress" aria-live="polite"></p>
+        </div>
+        <form id="habit-form" class="habit-form">
+          <label class="sr-only" for="habit-name">새 습관 이름</label>
+          <input id="habit-name" name="habit" maxlength="40" placeholder="새 습관을 입력하세요" required />
+          <button type="submit">추가</button>
+        </form>
+        <ul id="habit-list" class="habit-list"></ul>
+        <p id="empty-state" class="empty-state">첫 습관을 추가해 오늘의 작은 성공을 시작하세요.</p>
+      </section>
+    </main>
+    <template id="habit-template">
+      <li class="habit-card">
+        <button class="check-button" type="button" aria-label="완료 상태 변경"><span>✓</span></button>
+        <div class="habit-copy">
+          <strong class="habit-name"></strong>
+          <span class="streak"></span>
+        </div>
+        <button class="delete-button" type="button" aria-label="습관 삭제">삭제</button>
+      </li>
+    </template>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

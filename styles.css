@@ -1,0 +1,48 @@
+:root {
+  color-scheme: light;
+  font-family: Inter, Pretendard, "Noto Sans KR", system-ui, sans-serif;
+  color: #17322b;
+  background: #f4f0e7;
+  font-synthesis: none;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: radial-gradient(circle at 85% 10%, rgba(239, 173, 120, 0.35), transparent 28rem), #f4f0e7;
+}
+button, input { font: inherit; }
+button { cursor: pointer; }
+.shell { width: min(760px, calc(100% - 32px)); margin: 0 auto; padding: 72px 0; }
+.hero { margin-bottom: 48px; }
+.eyebrow { margin: 0 0 12px; color: #dd6b3d; font-size: 0.76rem; font-weight: 800; letter-spacing: 0.15em; }
+h1, h2 { margin: 0; letter-spacing: -0.04em; }
+h1 { max-width: 640px; font-family: Georgia, serif; font-size: clamp(2.8rem, 9vw, 5.8rem); line-height: 0.96; font-weight: 500; }
+h2 { font-size: 1.65rem; }
+.today { margin: 24px 0 0; color: #65736e; }
+.panel { padding: 32px; border: 1px solid rgba(23, 50, 43, 0.12); border-radius: 28px; background: rgba(255, 255, 255, 0.7); box-shadow: 0 24px 70px rgba(73, 58, 39, 0.1); backdrop-filter: blur(12px); }
+.section-heading { display: flex; align-items: end; justify-content: space-between; gap: 16px; }
+.progress { margin: 0; color: #65736e; font-weight: 700; }
+.habit-form { display: flex; gap: 10px; margin: 28px 0; }
+.habit-form input { min-width: 0; flex: 1; padding: 14px 18px; border: 1px solid #c9cdc5; border-radius: 14px; background: #fff; color: inherit; outline: none; }
+.habit-form input:focus { border-color: #27745f; box-shadow: 0 0 0 3px rgba(39, 116, 95, 0.12); }
+.habit-form button { padding: 0 22px; border: 0; border-radius: 14px; background: #17322b; color: white; font-weight: 800; }
+.habit-list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.habit-card { display: flex; align-items: center; gap: 14px; padding: 15px; border-radius: 16px; background: #fff; }
+.check-button { display: grid; width: 42px; height: 42px; flex: 0 0 auto; place-items: center; border: 2px solid #b8c2bd; border-radius: 50%; background: transparent; color: transparent; font-weight: 900; }
+.habit-card.completed .check-button { border-color: #27745f; background: #27745f; color: white; }
+.habit-card.completed .habit-name { color: #6e7b76; text-decoration: line-through; }
+.habit-copy { display: grid; flex: 1; gap: 4px; }
+.streak { color: #7b8782; font-size: 0.84rem; }
+.delete-button { border: 0; background: transparent; color: #a15c43; font-size: 0.84rem; }
+.empty-state { margin: 34px 0 12px; color: #7b8782; text-align: center; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+@media (max-width: 560px) {
+  .shell { padding: 44px 0; }
+  .panel { padding: 22px; border-radius: 22px; }
+  .section-heading { align-items: start; flex-direction: column; }
+  .habit-form { align-items: stretch; flex-direction: column; }
+  .habit-form button { padding: 14px; }
+}
